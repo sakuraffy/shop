@@ -5,7 +5,7 @@
   
 <struts>  
     <package name="shop" extends="struts-default">  
-        <action name="user_*" class="userAction" method="{1}">  
+        <action name="account_*" class="accountAction" method="{1}">  
             <result name="index">/index.jsp</result>  
         </action>  
     </package>  

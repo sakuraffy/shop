@@ -33,4 +33,22 @@ shop 开发过程
 		4.8 在web.xml中配置监听器ContextLoaderListener，启动的时候加载Spring配置文件
 		Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)	
 
+正式开发
+	1. 通过反射与泛型抽取Service层
+		1.1 添加BaseSevice和BaseServiceImpl
+		1.2 完成通用方法增删改查
+		1.3 通过反射获得泛型类型参数
+		1.4 懒加载BaseAction
+		1.5 添加AcoountService和AccountServiceImpl测试
+		
+	2. 抽取Action层
+		2.1 添加数据域request，session，application和相应aware接口
+		2.2 添加ModelDriven 减少参数前缀
+		2.3 将service对象统一放在BaseAction中
+	
+	3. 用注解替换xml
+		1. 替换Service
+		2. 替换Controller
+		3. 替换Entry  --在sessionFactory中使用packagesToScan
+
 			

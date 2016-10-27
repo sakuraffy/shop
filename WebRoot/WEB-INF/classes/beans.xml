@@ -13,19 +13,11 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd">
         
-        <bean id="date" class="java.util.Date"></bean>
-        
-        <bean id="userService" class="cn.sakuraffy.shop.service.impl.UserServiceImpl">
-        	<property name="sessionFactory" ref="sessionFactory"></property>
-        </bean>
-        
-        <bean id="userAction" class="cn.sakuraffy.shop.action.UserAction">
-        	<property name="userService" ref="userService"></property>
-        </bean>
+        <context:component-scan base-package="cn.sakuraffy.shop.."/> 
         
         <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">  
 		    <property name="driverClass" value="com.mysql.jdbc.Driver" />  
-		    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test" />  
+		    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shop" />  
 		    <property name="user" value="root" />  
 		    <property name="password" value="root" />  
 		</bean>
@@ -33,6 +25,7 @@
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">  
 		     <property name="dataSource" ref="dataSource" />  
 		     <property name="configLocation" value="classpath:hibernate.cfg.xml" /> <!-- 加载hibernate配置文件 -->  
+			 <property name="packagesToScan" value="cn.sakuraffy.shop.model" />  
 		</bean> 
 		
 		<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
@@ -54,7 +47,5 @@
 		    <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/><!-- 连接了<span style="font-family:Microsoft YaHei;">上</span>面的advice和上面的pointcut -->  
 		    <!-- aop:pointcut要写在aop:advisor上面，否则会报错 -->  
 		 </aop:config> 
-		
-		
-	
+			
 </beans>
