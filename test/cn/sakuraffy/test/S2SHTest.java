@@ -18,6 +18,8 @@ import cn.sakuraffy.shop.service.impl.UserServiceImpl;
 public class S2SHTest {
 	@Resource
 	private Date date;
+	@Resource
+	private UserService userService;
 	
 	@Test
 	public void testSpring() {
@@ -28,5 +30,10 @@ public class S2SHTest {
 	public void testHibernate() {
 		UserService userService = new UserServiceImpl();
 		userService.save(new User("sakuraffy",new Date()));
+	}
+	
+	@Test
+	public void testSpringHibernate() {
+		userService.update(new User(1,"sakuraffy",new Date()));
 	}
 }

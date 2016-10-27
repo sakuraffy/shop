@@ -14,5 +14,43 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd">
         
         <bean id="date" class="java.util.Date"></bean>
+        
+        <bean id="userService" class="cn.sakuraffy.shop.service.impl.UserServiceImpl">
+        	<property name="sessionFactory" ref="sessionFactory"></property>
+        </bean>
+        
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">  
+		    <property name="driverClass" value="com.mysql.jdbc.Driver" />  
+		    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test" />  
+		    <property name="user" value="root" />  
+		    <property name="password" value="root" />  
+		</bean>
 		
+		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">  
+		     <property name="dataSource" ref="dataSource" />  
+		     <property name="configLocation" value="classpath:hibernate.cfg.xml" /> <!-- 加载hibernate配置文件 -->  
+		</bean> 
+		
+		<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+			<property name="sessionFactory" ref="sessionFactory" />
+		</bean>
+		
+		<tx:advice id="advice" transaction-manager="transactionManager">  
+		    <tx:attributes>  
+		        <tx:method name="save*" propagation="REQUIRED"/>  
+		        <tx:method name="update*" propagation="REQUIRED"/>  
+		        <tx:method name="delete*" propagation="REQUIRED"/>  
+		        <tx:method name="*" propagation="SUPPORTS"/>  
+		    </tx:attributes>  
+		</tx:advice>
+		
+		<aop:config>  
+		    <!-- 配置哪些包的类要切入事务 -->  
+		    <aop:pointcut id="pointcut" expression="execution(* cn.sakuraffy.shop.service.impl.*.*(..))" />  
+		    <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/><!-- 连接了<span style="font-family:Microsoft YaHei;">上</span>面的advice和上面的pointcut -->  
+		    <!-- aop:pointcut要写在aop:advisor上面，否则会报错 -->  
+		 </aop:config> 
+		
+		
+	
 </beans>

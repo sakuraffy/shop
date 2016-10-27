@@ -6,7 +6,7 @@
 <hibernate-configuration>
 
 <session-factory>
-	<property name="dialect">
+	<!-- <property name="dialect">
 		org.hibernate.dialect.MySQLDialect
 	</property>
 	<property name="connection.url">
@@ -16,7 +16,7 @@
 	<property name="connection.password">root</property>
 	<property name="connection.driver_class">
 		com.mysql.jdbc.Driver
-	</property>
+	</property> -->
 	
 	<mapping resource="cn/sakuraffy/shop/model/User.hbm.xml" />
 
