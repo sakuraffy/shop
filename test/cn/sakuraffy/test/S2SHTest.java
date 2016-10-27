@@ -34,6 +34,6 @@ public class S2SHTest {
 	
 	@Test
 	public void testSpringHibernate() {
-		userService.update(new User(1,"sakuraffy",new Date()));
+		userService.save(new User("sakuraffy",new Date()));
 	}
 }

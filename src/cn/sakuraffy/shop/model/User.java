@@ -13,13 +13,6 @@ public class User {
 		this.birthday = birthday;
 	}
 	
-	public User(Integer id, String name, Date birthday) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.birthday = birthday;
-	}
-
 	public final Integer getId() {
 		return id;
 	}

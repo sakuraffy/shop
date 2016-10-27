@@ -5,5 +5,6 @@
   
   <body>
     <a href="user_save.action">save</a>
+    <a href="user_update.action">update</a>
   </body>
 </html>

@@ -21,3 +21,16 @@ shop 开发过程
 		3.5 配置advice（通知），通知是指定了哪些方法需要什么类型的事务模式	
 		3.6 配置AOP切面表达式
 		3.7 让Service交给Spring管理，并且依赖sessionFactory，如果能插入数据，则说明声明事务OK
+	
+	4. 搭建Struts2的开发环境并整合Spring
+		4.1 添加相应的jar包，并在web.xml中配置StrutsPrepareAndExecuteFilter过滤器
+		4.2 创建Action并且配置到struts.xml文件中
+		4.3 通过jsp访问Action，如果Action可以创建，则表示struts2环境OK
+		4.4 默认在没有整合的时候创建Action的工厂为：Choosing bean (struts) for (com.opensymphony.xwork2.ObjectFactory)
+		4.5 添加相应的jar包：spring4.2.4-web.jar 里面包括struts2-spring-plugin-2.3.24.1.jar
+		4.6 把Action和它的依赖交给Spring管理，配置一下beans.xml
+		4.7 在struts.xml中class对应的是Spring中配置action的id值
+		4.8 在web.xml中配置监听器ContextLoaderListener，启动的时候加载Spring配置文件
+		Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)	
+
+			
