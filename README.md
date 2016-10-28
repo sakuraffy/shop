@@ -56,5 +56,11 @@ shop 开发过程
 		4.2 将页面公共信息抽取为head.jspf
 		4.3 加入easyUI东西南北中的布局
 		4.4 利用ajax动态加载tabs
+		
+	5. Account与Category级联查询与分组
+		5.1 添加Category实体及@ManyToOne注解
+		5.2 修改Account @OneToMany注解
+		5.3 添加CategoryService及CategoryServiceImpl
+		5.4 在test中添加测试CategoryServiceTest
 
 			
