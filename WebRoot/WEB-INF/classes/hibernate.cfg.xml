@@ -21,6 +21,9 @@
 	<!-- 在sessionFactory中添加packagesToScan -->
 	<!-- <mapping resource="cn/sakuraffy/shop/model/Account.hbm.xml" /> -->
 	<!-- <mapping class="cn.sakuraffy.shop.model.Account" /> -->
+	
+	<property name="show_sql">true</property>
+	<property name="format_sql">true</property>
 
 </session-factory>
 

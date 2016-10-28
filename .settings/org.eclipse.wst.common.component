@@ -4,7 +4,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/config"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
-        <property name="context-root" value="e_shop"/>
         <property name="java-output-path" value="/e_shop/WebRoot/WEB-INF/classes"/>
+        <property name="context-root" value="/shop"/>
     </wb-module>
 </project-modules>
