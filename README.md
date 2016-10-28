@@ -47,8 +47,14 @@ shop 开发过程
 		2.3 将service对象统一放在BaseAction中
 	
 	3. 用注解替换xml
-		1. 替换Service
-		2. 替换Controller
-		3. 替换Entry  --在sessionFactory中使用packagesToScan
+		3.1 替换Service
+		3.2 替换Controller
+		3.3 替换Entry  --在sessionFactory中使用packagesToScan
+		
+	4. 用easyUI搭建后台
+		4.1 加入easyUI相关的文件
+		4.2 将页面公共信息抽取为head.jspf
+		4.3 加入easyUI东西南北中的布局
+		4.4 利用ajax动态加载tabs
 
 			

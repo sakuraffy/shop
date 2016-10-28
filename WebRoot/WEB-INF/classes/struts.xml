@@ -4,10 +4,22 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">  
   
 <struts>  
-    <package name="shop" extends="struts-default">  
+    <package name="shop" extends="struts-default">
+    	<global-results>
+    		<result name="aindex">/WEB-INF/main/aindex.jsp</result>
+    	</global-results>
+      
         <action name="account_*" class="accountAction" method="{1}">  
             <result name="index">/index.jsp</result>  
         </action>  
-    </package>  
+        
+        <!-- 用来完成系统 请求转发的action,所有的请求都交给execute-->  
+        <action name="send_*_*" class="sendAction">  
+            <result name="send">/WEB-INF/{1}/{2}.jsp</result>  
+        </action>
+        
+    </package> 
+    
+  
   
 </struts>

@@ -5,5 +5,6 @@
   
   <body>
     <a href="account_query.action">query</a>
+    <a href="send_main_aindex.action">aindex</a>
   </body>
 </html>
