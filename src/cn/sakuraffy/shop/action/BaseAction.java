@@ -2,6 +2,7 @@ package cn.sakuraffy.shop.action;
 
 import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -38,6 +39,16 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 	protected int rows;
 	protected Map<String,Object> pageMap;
 	
+	// 列表以json形式传递到后台管理
+	protected List<T> jsonList;
+	
+	public final List<T> getJsonList() {
+		return jsonList;
+	}
+	public final void setJsonList(List<T> jsonList) {
+		this.jsonList = jsonList;
+	}
+
 	// delete ids
 	protected String ids;
 	protected InputStream inputStream;

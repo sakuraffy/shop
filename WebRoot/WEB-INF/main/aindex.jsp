@@ -50,7 +50,8 @@
 			        	系统信息   
 			    </div>   
 			</div>
-        </div>     
+        </div> 
+        <div id="win" data-options="collapsible:false,minimizable:false,maximizable:false,modal:true"></div>     
     </body>   
   
 </html>

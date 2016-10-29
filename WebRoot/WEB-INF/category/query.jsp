@@ -3,7 +3,14 @@
 <html>
   <head>
 	<%@ include file="/public/head.jspf" %>
-
+	<style type="text/css">
+		body {
+			margin: 1px;
+		}
+		.searchbox {
+		  margin: -3;
+		}
+	</style>
 	<script type="text/javascript">
 		$(function(){
 			$('#dg').datagrid({   
@@ -26,6 +33,50 @@
 				pageList:[5,8,10],
 				idField:'id',//指定id为标识字段，在删除，更新的时候有用，如果配置此字段，在翻页时，换页不会影响选中的项
 				toolbar: [{
+					iconCls: 'icon-add',
+					text:'添加类别',
+					handler: function(){
+						parent.$("#win").window({
+							title:"添加类别",
+							width:350,
+							height:200,
+							content:'<iframe src="send_category_save.action" frameborder="0" width="100%" height="100%"/>'
+						});
+					}
+				},'-',{
+					iconCls: 'icon-edit',
+					text:'更新类别',
+					handler: function(){
+						//判断是否有选中行记录，使用getSelections获取选中的所有行
+						var rows = $("#dg").datagrid("getSelections");
+						if(rows.length == 0) {
+							//弹出提示信息
+							$.messager.show({ //语法类似于java中的静态方法，直接对象调用
+								title:'错误提示',
+								msg:'至少要选择一条记录',
+								timeout:2000,
+								showType:'slide',
+							});
+						}else if(rows.length != 1) {
+							//弹出提示信息
+							$.messager.show({ //语法类似于java中的静态方法，直接对象调用
+								title:'错误提示',
+								msg:'每次只能更新一条记录',
+								timeout:2000,
+								showType:'slide',
+							});
+						} else{
+							//1. 弹出更新的页面
+							parent.$("#win").window({
+								title:"添加类别",
+								width:350,
+								height:250,
+								content:'<iframe src="send_category_update.action" frameborder="0" width="100%" height="100%"/>'
+							});
+							//2. 
+						}
+					}
+				},'-',{
 					iconCls: 'icon-remove',
 					text:'删除类别',
 					handler: function(){

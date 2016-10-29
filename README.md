@@ -72,4 +72,11 @@ shop 开发过程
 	7. 添加Category的搜索与删除
 		7.1 搜索逻辑 ： 获取值并reload
 		7.2 多条删除，通过stream返回操作结果
+	
+	8. 添加Category的增加与修改
+		8.1在toolbar中加入增加与修改标签
+		8.2添加save.jsp并添加业务逻辑
+		8.3添加update.jsp并添加业务逻辑
+		8.4修改AccountAction中的query()，使用json传递list数据
+		8.5修改struts.xml
 			

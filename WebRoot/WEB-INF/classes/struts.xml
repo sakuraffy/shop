@@ -10,7 +10,9 @@
     	</global-results>
       
         <action name="account_*" class="accountAction" method="{1}">  
-            <result name="index">/index.jsp</result>  
+            <result name="jsonList" type="json">
+            	<param name="root">jsonList</param>
+            </result>
         </action>  
         
         <!-- 用来完成系统 请求转发的action,所有的请求都交给execute-->  
@@ -26,6 +28,8 @@
             	<param name="inputName">inputStream</param>
             </result> 
         </action>
+        
+        
         
     </package> 
     

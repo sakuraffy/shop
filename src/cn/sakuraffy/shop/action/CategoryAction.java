@@ -35,4 +35,12 @@ public class CategoryAction extends BaseAction<Category> {
 		return "stream";
 	}
 	
+	public void save() {
+		categoryService.save(model);
+	}
+	
+	public void update() {
+		categoryService.update(model);
+	}
+	
 }
