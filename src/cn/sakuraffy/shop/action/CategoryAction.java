@@ -1,9 +1,8 @@
 package cn.sakuraffy.shop.action;
 
+import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.List;
-
-import net.sf.json.JSONSerializer;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -18,11 +17,22 @@ public class CategoryAction extends BaseAction<Category> {
 
 	public String queryJoinAccount() {
 		pageMap = new HashMap<>();
-		Long total = categoryService.total();
-		List<Category> categorys = categoryService.queryJoinAccount(page, rows);
+		Long total = categoryService.total(model.getType());
+		List<Category> categorys = categoryService.queryJoinAccount(model.getType(),page, rows);
 		pageMap.put("rows", categorys);
 		pageMap.put("total", total);
-		System.out.println(JSONSerializer.toJSON(pageMap));
 		return "jsonMap";
 	}
+	
+	public String deleteByIds() {
+		try {
+			categoryService.deleteByIds(ids);
+		} catch(Exception e) {
+			inputStream = new ByteArrayInputStream("false".getBytes());
+			return "stream";
+		}
+		inputStream = new ByteArrayInputStream("true".getBytes());
+		return "stream";
+	}
+	
 }

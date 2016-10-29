@@ -1,5 +1,6 @@
 package cn.sakuraffy.shop.action;
 
+import java.io.InputStream;
 import java.lang.reflect.ParameterizedType;
 import java.util.Map;
 
@@ -30,12 +31,29 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 	protected Map<String,Object> application;
 	
 	// ModelDriven 减少参数的前缀
-	private T model;
+	protected T model;
 	
 	// 添加分页
 	protected int page;
 	protected int rows;
 	protected Map<String,Object> pageMap;
+	
+	// delete ids
+	protected String ids;
+	protected InputStream inputStream;
+
+	public final InputStream getInputStream() {
+		return inputStream;
+	}
+	public final void setInputStream(InputStream inputStream) {
+		this.inputStream = inputStream;
+	}
+	public final String getIds() {
+		return ids;
+	}
+	public final void setIds(String ids) {
+		this.ids = ids;
+	}
 
 	// service 对象
 	@Resource

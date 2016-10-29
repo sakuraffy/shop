@@ -20,8 +20,14 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category>
 
 	@Override
 	public List<Category> queryJoinAccount(int page, int rows) {
-		String hql = "from Category c left join fetch c.account";
+		return queryJoinAccount("", page, rows);
+	}
+	
+	@Override
+	public List<Category> queryJoinAccount(String type,int page, int rows) {
+		String hql = "from Category c left join fetch c.account where c.type like :type";
 		return getSession().createQuery(hql)
+				.setString("type", "%" + type + "%")
 				.setFirstResult((page-1)*rows)
 				.setMaxResults(rows)
 				.list();
@@ -29,8 +35,21 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category>
 
 	@Override
 	public Long total() {
-		String hql = "select count(*) from Category";
-		return (Long) getSession().createQuery(hql).uniqueResult();
+		return total("");
+	}
+
+	@Override
+	public Long total(String type) {
+		String hql = "select count(*) from Category c where c.type like :type";
+		return (Long) getSession().createQuery(hql)
+				.setString("type", "%" + type + "%")
+				.uniqueResult();
+	}
+
+	@Override
+	public void deleteByIds(String ids) {
+		String hql = "delete from Category c where c.id in (" + ids +  ")";
+		getSession().createQuery(hql).executeUpdate();
 	}
 
 }

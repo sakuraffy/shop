@@ -22,6 +22,9 @@
             <result name="jsonMap" type="json">
             	<param name="root">pageMap</param>
             </result>  
+            <result name="stream" type="stream">
+            	<param name="inputName">inputStream</param>
+            </result> 
         </action>
         
     </package> 
