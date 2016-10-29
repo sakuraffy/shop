@@ -13,21 +13,24 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category>
 					implements CategoryService {
 
 	@Override
-	public List<Category> queryJoinAccount(String type) {
-		String hql = "from Category c left join fetch c.account where c.type like :type";
+	public List<Category> queryJoinAccount() {
+		String hql = "from Category c left join fetch c.account";
+		return getSession().createQuery(hql).list();
+	}
+
+	@Override
+	public List<Category> queryJoinAccount(int page, int rows) {
+		String hql = "from Category c left join fetch c.account";
 		return getSession().createQuery(hql)
-				.setString("type", "%" + type + "%")
+				.setFirstResult((page-1)*rows)
+				.setMaxResults(rows)
 				.list();
 	}
 
 	@Override
-	public List<Category> queryJoinAccount(String type, int page, int size) {
-		String hql = "from Category c left join fetch c.account where c.type like :type";
-		return getSession().createQuery(hql)
-				.setString("type", "%" + type + "%")
-				.setFirstResult((page-1)*size)
-				.setMaxResults(size)
-				.list();
+	public Long total() {
+		String hql = "select count(*) from Category";
+		return (Long) getSession().createQuery(hql).uniqueResult();
 	}
 
 }

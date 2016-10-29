@@ -5,6 +5,7 @@ import java.util.List;
 import cn.sakuraffy.shop.model.Category;
 
 public interface CategoryService {
-	public List<Category> queryJoinAccount(String type);
-	public List<Category> queryJoinAccount(String type,int page,int size);
+	public Long total();
+	public List<Category> queryJoinAccount();
+	public List<Category> queryJoinAccount(int page,int rows);
 }

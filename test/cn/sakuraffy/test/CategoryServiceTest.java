@@ -19,7 +19,7 @@ public class CategoryServiceTest {
 	
 	@Test
 	public void testQueryJoinAccount() {
-		for (Category c : categoryService.queryJoinAccount("",1,2)) {
+		for (Category c : categoryService.queryJoinAccount(1,2)) {
 			System.out.println(c);
 			System.out.println(c.getAccount());
 		}

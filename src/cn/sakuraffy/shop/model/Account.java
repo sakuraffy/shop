@@ -1,12 +1,8 @@
 package cn.sakuraffy.shop.model;
 
-import java.util.Set;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +12,8 @@ public class Account {
 	private String login;
 	private String name;
 	private String pass;
-	private Set<Category> categorys;
+	//没有这个业务逻辑
+	//private Set<Category> categorys;
 
 	// Action --> ModelDriven
 	public Account() {
@@ -69,15 +66,6 @@ public class Account {
 	}
 	public final void setPass(String pass) {
 		this.pass = pass;
-	}
-	
-	@OneToMany(fetch=FetchType.LAZY)
-	public final Set<Category> getCategorys() {
-		return categorys;
-	}
-
-	public final void setCategorys(Set<Category> categorys) {
-		this.categorys = categorys;
 	}
 	
 	@Override

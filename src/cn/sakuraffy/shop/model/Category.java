@@ -1,7 +1,6 @@
 package cn.sakuraffy.shop.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -54,7 +53,7 @@ public class Category {
 		this.type = type;
 	}
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="aid")
 	public final Account getAccount() {
 		return account;

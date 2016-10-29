@@ -62,5 +62,11 @@ shop 开发过程
 		5.2 修改Account @OneToMany注解
 		5.3 添加CategoryService及CategoryServiceImpl
 		5.4 在test中添加测试CategoryServiceTest
+		
+	6. 以Json的形式在easyUI中展示查询结果
+		6.1 加入与json有关的jar包
+		6.2 添加CategoryAction，修改BaseAction
+		6.3 修改struts.xml
+		6.4 使用easyUI中DataGrid展示数据
 
 			

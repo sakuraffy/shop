@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.sakuraffy.shop.service.AccountService;
+import cn.sakuraffy.shop.service.CategoryService;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -31,9 +32,16 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 	// ModelDriven 减少参数的前缀
 	private T model;
 	
+	// 添加分页
+	protected int page;
+	protected int rows;
+	protected Map<String,Object> pageMap;
+
 	// service 对象
 	@Resource
 	protected AccountService accountService;
+	@Resource
+	protected CategoryService categoryService;
 	
 	public final void setRequest(Map<String, Object> request) {
 		this.request = request;
@@ -43,6 +51,25 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 	}
 	public final void setApplication(Map<String, Object> application) {
 		this.application = application;
+	}
+	
+	public final int getPage() {
+		return page;
+	}
+	public final void setPage(int page) {
+		this.page = page;
+	}
+	public final int getRows() {
+		return rows;
+	}
+	public final void setRows(int rows) {
+		this.rows = rows;
+	}
+	public final Map<String, Object> getPageMap() {
+		return pageMap;
+	}
+	public final void setPageMap(Map<String, Object> pageMap) {
+		this.pageMap = pageMap;
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
