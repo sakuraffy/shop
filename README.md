@@ -69,4 +69,7 @@ shop 开发过程
 		6.3 修改struts.xml
 		6.4 使用easyUI中DataGrid展示数据
 
+	7. 添加Category的搜索与删除
+		7.1 搜索逻辑 ： 获取值并reload
+		7.2 多条删除，通过stream返回操作结果
 			
