@@ -9,23 +9,35 @@
     		<result name="aindex">/WEB-INF/main/aindex.jsp</result>
     	</global-results>
       
+      	<!-- 用来完成系统 请求转发的action,所有的请求都交给execute-->  
+        <action name="send_*_*" class="sendAction">  
+            <result name="send">/WEB-INF/{1}/{2}.jsp</result>  
+        </action>
+      
         <action name="account_*" class="accountAction" method="{1}">  
             <result name="jsonList" type="json">
             	<param name="root">jsonList</param>
             </result>
         </action>  
         
-        <!-- 用来完成系统 请求转发的action,所有的请求都交给execute-->  
-        <action name="send_*_*" class="sendAction">  
-            <result name="send">/WEB-INF/{1}/{2}.jsp</result>  
-        </action>
-        
         <action name="category_*" class="categoryAction" method="{1}">  
             <result name="jsonMap" type="json">
-            	<param name="root">pageMap</param>
+            	<param name="root">jsonMap</param>
             </result>  
-            <result name="stream" type="stream">
-            	<param name="inputName">inputStream</param>
+            <result name="jsonStream" type="stream">
+            	<param name="inputName">jsonStream</param>
+            </result> 
+            <result name="jsonList" type="json">
+            	<param name="root">jsonList</param>
+            </result>
+        </action>
+        
+        <action name="product_*" class="productAction" method="{1}">  
+            <result name="jsonMap" type="json">
+            	<param name="root">jsonMap</param>
+            </result>  
+            <result name="jsonStream" type="stream">
+            	<param name="inputName">jsonStream</param>
             </result> 
         </action>
         

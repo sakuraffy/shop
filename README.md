@@ -79,4 +79,10 @@ shop 开发过程
 		8.3添加update.jsp并添加业务逻辑
 		8.4修改AccountAction中的query()，使用json传递list数据
 		8.5修改struts.xml
-			
+	
+	9. 完成商品的增删改查及文件上传
+		9.1 增删改查与Category类似
+		9.2 文件上传
+			9.2.1 根据FileUploadInterceptor创建FileImage(file,filename,contentType)
+			9.2.2编写FileUpload与FileUploadImpl
+			9.2.3将FileUpload注入到ProductAction中

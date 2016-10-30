@@ -16,11 +16,11 @@ public class CategoryAction extends BaseAction<Category> {
 	private static final long serialVersionUID = -5180663860794640308L;
 
 	public String queryJoinAccount() {
-		pageMap = new HashMap<>();
+		jsonMap = new HashMap<>();
 		Long total = categoryService.total(model.getType());
 		List<Category> categorys = categoryService.queryJoinAccount(model.getType(),page, rows);
-		pageMap.put("rows", categorys);
-		pageMap.put("total", total);
+		jsonMap.put("rows", categorys);
+		jsonMap.put("total", total);
 		return "jsonMap";
 	}
 	
@@ -28,11 +28,11 @@ public class CategoryAction extends BaseAction<Category> {
 		try {
 			categoryService.deleteByIds(ids);
 		} catch(Exception e) {
-			inputStream = new ByteArrayInputStream("false".getBytes());
-			return "stream";
+			jsonStream = new ByteArrayInputStream("false".getBytes());
+			return "jsonStream";
 		}
-		inputStream = new ByteArrayInputStream("true".getBytes());
-		return "stream";
+		jsonStream = new ByteArrayInputStream("true".getBytes());
+		return "jsonStream";
 	}
 	
 	public void save() {
@@ -41,6 +41,11 @@ public class CategoryAction extends BaseAction<Category> {
 	
 	public void update() {
 		categoryService.update(model);
+	}
+	
+	public String query() {
+		jsonList = categoryService.query();
+		return "jsonList";
 	}
 	
 }

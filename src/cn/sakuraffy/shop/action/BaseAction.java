@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 
 import cn.sakuraffy.shop.service.AccountService;
 import cn.sakuraffy.shop.service.CategoryService;
+import cn.sakuraffy.shop.service.ProductService;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -37,40 +38,29 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 	// 添加分页
 	protected int page;
 	protected int rows;
-	protected Map<String,Object> pageMap;
+	protected Map<String,Object> jsonMap;
 	
 	// 列表以json形式传递到后台管理
 	protected List<T> jsonList;
 	
-	public final List<T> getJsonList() {
-		return jsonList;
-	}
-	public final void setJsonList(List<T> jsonList) {
-		this.jsonList = jsonList;
-	}
-
 	// delete ids
 	protected String ids;
-	protected InputStream inputStream;
-
-	public final InputStream getInputStream() {
-		return inputStream;
-	}
-	public final void setInputStream(InputStream inputStream) {
-		this.inputStream = inputStream;
-	}
+	protected InputStream jsonStream;
+	
+	// service 对象
+	@Resource
+	protected AccountService accountService;
+	@Resource
+	protected CategoryService categoryService;
+	@Resource
+	protected ProductService productService;
+	
 	public final String getIds() {
 		return ids;
 	}
 	public final void setIds(String ids) {
 		this.ids = ids;
 	}
-
-	// service 对象
-	@Resource
-	protected AccountService accountService;
-	@Resource
-	protected CategoryService categoryService;
 	
 	public final void setRequest(Map<String, Object> request) {
 		this.request = request;
@@ -94,11 +84,24 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 	public final void setRows(int rows) {
 		this.rows = rows;
 	}
-	public final Map<String, Object> getPageMap() {
-		return pageMap;
+	
+	public final Map<String, Object> getJsonMap() {
+		return jsonMap;
 	}
-	public final void setPageMap(Map<String, Object> pageMap) {
-		this.pageMap = pageMap;
+	public final void setJsonMap(Map<String, Object> jsonMap) {
+		this.jsonMap = jsonMap;
+	}
+	public final InputStream getJsonStream() {
+		return jsonStream;
+	}
+	public final void setJsonStream(InputStream jsonStream) {
+		this.jsonStream = jsonStream;
+	}
+	public final List<T> getJsonList() {
+		return jsonList;
+	}
+	public final void setJsonList(List<T> jsonList) {
+		this.jsonList = jsonList;
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
