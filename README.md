@@ -86,3 +86,8 @@ shop 开发过程
 			9.2.1 根据FileUploadInterceptor创建FileImage(file,filename,contentType)
 			9.2.2编写FileUpload与FileUploadImpl
 			9.2.3将FileUpload注入到ProductAction中
+			
+	10. 完成前台首页的展示与自动更新
+		10.1添加ProductTimeTask完成类别与商品的查询，并放在Application中
+		10.2添加Listener，获取Spring的ApplicationContext，并设置为ProductTimeTask的Application
+		10.3修改web.xml

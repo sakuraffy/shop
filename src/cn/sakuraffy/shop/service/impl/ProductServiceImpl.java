@@ -36,4 +36,12 @@ public class ProductServiceImpl extends BaseServiceImpl<Product>
 		getSession().createQuery(hql).executeUpdate();
 	}
 
+	@Override
+	public List<Product> queryByCategoryId(int id) {
+		String hql = "from Product p where p.category.id = :id";
+		return getSession().createQuery(hql)
+				.setInteger("id", id)
+				.list();
+	}
+
 }
