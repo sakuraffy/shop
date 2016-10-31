@@ -7,6 +7,7 @@
     <package name="shop" extends="json-default">
     	<global-results>
     		<result name="aindex">/WEB-INF/main/aindex.jsp</result>
+    		<result name="index">/WEB-INF/main/aindex.jsp</result>
     	</global-results>
       
       	<!-- 用来完成系统 请求转发的action,所有的请求都交给execute-->  
@@ -39,9 +40,9 @@
             <result name="jsonStream" type="stream">
             	<param name="inputName">jsonStream</param>
             </result> 
+            <result name="detail">detail.jsp</result>
         </action>
-        
-        
+       
         
     </package> 
     

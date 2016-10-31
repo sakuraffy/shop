@@ -21,9 +21,26 @@
 	<!-- 在sessionFactory中添加packagesToScan -->
 	<!-- <mapping resource="cn/sakuraffy/shop/model/Account.hbm.xml" /> -->
 	<!-- <mapping class="cn.sakuraffy.shop.model.Account" /> -->
-	
+
+	<property name="dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
 	<property name="show_sql">true</property>
 	<property name="format_sql">true</property>
+	
+	<!-- 开启二级缓存 -->
+	<property name="hibernate.cache.use_second_level_cache">true</property>
+	<!-- 加载提供商 -->
+	<property name="hibernate.cache.region.factory_class">
+		org.hibernate.cache.ehcache.EhCacheRegionFactory
+	</property>
+	<!-- HQL查询缓存 -->
+	<property name="hibernate.cache.use_query_cache">true</property>
+
+	<!-- 要缓存的Class或Collection -->
+	<class-cache usage="read-write" class="cn.sakuraffy.shop.model.Account"/>
+	<class-cache usage="read-write" class="cn.sakuraffy.shop.model.Category"/>
+	<class-cache usage="read-write" class="cn.sakuraffy.shop.model.Product"/>
 
 </session-factory>
 

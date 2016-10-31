@@ -37,7 +37,7 @@ public class InitDataListener implements ServletContextListener {
 		//把内置对象交给productTimerTask,因为productTimerTask里面是拿不到application的，只能通过监听器set给它
 		productTimerTask.setApplication(event.getServletContext());
 		
-		//通过设置定时器，让首页的数据每个一小时同步一次（配置为守护线程）--每2分钟执行一次
-		new Timer(true).schedule(productTimerTask, 2*60*1000);
+		//通过设置定时器，让首页的数据每个一小时同步一次（配置为守护线程）--每30分钟执行一次
+		new Timer(true).schedule(productTimerTask, 0, 30*60*1000);
 	}
 } 

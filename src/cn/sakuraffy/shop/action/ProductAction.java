@@ -67,4 +67,9 @@ public class ProductAction extends BaseAction<Product>{
 	public final void setFileImage(FileImage fileImage) {
 		this.fileImage = fileImage;
 	}
+	
+	public String get() {
+		request.put("product", productService.get(model.getId()));
+		return "detail";
+	}
 }

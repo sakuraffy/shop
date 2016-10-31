@@ -91,3 +91,8 @@ shop 开发过程
 		10.1添加ProductTimeTask完成类别与商品的查询，并放在Application中
 		10.2添加Listener，获取Spring的ApplicationContext，并设置为ProductTimeTask的Application
 		10.3修改web.xml
+		
+	11. 完成Hibernate二级缓存与详细页面展示
+		11.1 在添加ProductAction中添加get()
+		11.2添加detail.jsp
+		11.3添加ehcache相关jar包及ehcache.xml
