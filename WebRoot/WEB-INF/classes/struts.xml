@@ -43,6 +43,12 @@
             <result name="detail">detail.jsp</result>
         </action>
        
+       <action name="user_*" class="userAction" method="{1}">
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="goUrl" type="redirect">
+				${#session.goUrl} <!-- 从值栈中取出session中的数据 -->
+			</result>
+		</action>
         
     </package> 
     

@@ -96,3 +96,9 @@ shop 开发过程
 		11.1 在添加ProductAction中添加get()
 		11.2添加detail.jsp
 		11.3添加ehcache相关jar包及ehcache.xml
+	
+	12. 完成用户登录与页面过滤
+		12.1添加UserFilter
+		12.2修改web.xml
+		12.3添加login.jsp和showCar.jsp
+		12.4添加修改UserAction与UserService

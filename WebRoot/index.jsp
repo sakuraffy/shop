@@ -20,7 +20,7 @@
                                 <li><a href="#">我的账户</a></li>
                                 <li><a href="#">购物车</a></li>
                                 <li><a href="#">注册</a></li>
-                                <li ><a href="#">登录</a></li>
+                                <li ><a href="login.jsp">登录</a></li>
                             </ul>
                             <!--头部小导航结束-->
                             <!-- logo -->

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import cn.sakuraffy.shop.service.AccountService;
 import cn.sakuraffy.shop.service.CategoryService;
 import cn.sakuraffy.shop.service.ProductService;
+import cn.sakuraffy.shop.service.UserService;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -54,6 +55,8 @@ public class BaseAction<T> extends ActionSupport implements RequestAware, Sessio
 	protected CategoryService categoryService;
 	@Resource
 	protected ProductService productService;
+	@Resource
+	UserService userService;
 	
 	public final String getIds() {
 		return ids;
