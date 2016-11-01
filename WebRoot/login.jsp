@@ -21,9 +21,9 @@
 					<ul class="top_links fr">
 						<li class="highlight"><a href="index.jsp">首页</a></li>
 						<li><a href="#">我的账户</a></li>
-						<li><a href="#">购物车</a></li>
-						<li><a href="register.jsp">注册</a></li>
-						<li><a href="#">登录</a></li>
+						<li><a href="sorder_queryUnfinish.action">购物车</a></li>
+						<li><a href="#">注册</a></li>
+						<li><a href="login.jsp">登录</a></li>
 					</ul>
 					<!--头部小导航结束-->
 					<!-- logo -->
@@ -54,19 +54,11 @@
 				<form method="post" action="${shop}/user_login.action">
 					<div>
 						<label for="login">账号:&nbsp;</label> 
-						<input type="text" name="login" />
+						<input type="text" name="login" value="user"/>
 					</div>
 					<div>
 						<label for="pass">密码:&nbsp</label> 
-						<input type="text" name="pass" />
-					</div>
-					<div>
-						<label for="login">账号:&nbsp;</label> 
-						<input type="text" name="login" />
-					</div>
-					<div>
-						<label for="login">账号:&nbsp;</label> 
-						<input type="text" name="login" />
+						<input type="text" name="pass" value="user" />
 					</div>
 					<div>
 						${requestScope.error}  

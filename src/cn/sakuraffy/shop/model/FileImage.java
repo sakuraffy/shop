@@ -3,7 +3,10 @@ package cn.sakuraffy.shop.model;
 import java.io.File;
 
 // 实现FileUploadInterceptor的要求
-public class FileImage {
+public class FileImage implements java.io.Serializable {
+
+	private static final long serialVersionUID = -5946299905908058688L;
+	
 	private File file;
 	private String contentType;
 	private String filename;

@@ -1,6 +1,7 @@
 package cn.sakuraffy.shop.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -9,7 +10,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_category")
-public class Category {
+public class Category implements java.io.Serializable {
+
+	private static final long serialVersionUID = 5168872881383679641L;
+	
 	private Integer id;
 	private boolean hot;
 	private String type;
@@ -53,7 +57,7 @@ public class Category {
 		this.type = type;
 	}
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="aid")
 	public final Account getAccount() {
 		return account;

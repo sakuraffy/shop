@@ -5,6 +5,7 @@
 	<%@include file="/public/head.jspf"%>
 	<link rel="stylesheet" href="${shop}/css/public.css" />
 	<link rel="stylesheet" href="${shop}/css/style.css" />
+	<script type="text/javascript" src="${shop}/js/showCar.js"></script>
 <body>
 	<div class="wrapper">
 		<div class="header">
@@ -14,11 +15,11 @@
 					<!--头部小导航-->
 					<div class="welcom fl">欢迎光临LEISUPET SHOP!</div>
 					<ul class="top_links fr">
-						<li class="highlight"><a href="#">首页</a></li>
+						<li class="highlight"><a href="index.jsp">首页</a></li>
 						<li><a href="#">我的账户</a></li>
-						<li><a href="#">购物车</a></li>
+						<li><a href="sorder_queryUnfinish.action">购物车</a></li>
 						<li><a href="#">注册</a></li>
-						<li><a href="#">登录</a></li>
+						<li><a href="lohin.jsp">登录</a></li>
 					</ul>
 					<!--头部小导航结束-->
 					<!-- logo -->
@@ -105,53 +106,31 @@
 				<div class="message success">我的购物车</div>
 				<table class="data-table cart-table" cellpadding="0" cellspacing="0">
 					<tr>
-						<th class="align_center" width="10%">商品编号</th>
-						<th class="align_left" width="35%" colspan="2">商品名称</th>
-						<th class="align_center" width="10%">销售价格</th>
-						<th class="align_center" width="20%">数量</th>
+						<th class="align_center" width="25%" colspan="2">商品</th>
+						<th class="align_center" width="15%">销售价格</th>
+						<th class="align_center" width="15%">数量</th>
 						<th class="align_center" width="15%">小计</th>
 						<th class="align_center" width="10%">删除</th>
 					</tr>
-					<tr>
-						<td class="align_center"><a href="#" class="edit">20140501</a>
-						</td>
-						<td width="80px"><img src="images/cart1.jpg" width="80"
-							height="80" />
-						</td>
-						<td class="align_left"><a class="pr_name" href="#">2014新款碎花长裙</a>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline">
-							<div class="wrap-input">
-								<input class="text" style="height: 20px;" value="1">		
-							</div>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline"><a href="#" class="remove"></a>
-						</td>
-					</tr>
-					<tr>
-						<td class="align_center"><a href="#" class="edit">20140501</a>
-						</td>
-						<td width="80px"><img src="images/cart1.jpg" width="80"
-							height="80" />
-						</td>
-						<td class="align_left"><a class="pr_name" href="#">2014新款碎花长裙</a>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline">
-							<div class="wrap-input">
-								<input class="text" style="height: 20px;" value="1">		
-							</div>
-						</td>
-						<td class="align_center vline"><span class="price">￥49.90</span>
-						</td>
-						<td class="align_center vline"><a href="#" class="remove"></a>
-						</td>
-					</tr>
+					<c:forEach items="${sorders}" var="sorder">
+						<tr>
+							<td width="80px"><img src="${shop}/upload/${sorder.product.pic}" width="80"
+								height="80" />
+							</td>
+							<td class="align_left"><a class="pr_name" href="#">${sorder.name}</a>
+							</td>
+							<td class="align_center vline price">${sorder.price}</td>
+							<td class="align_center vline">
+								<div class="wrap-input">
+									<input class="text" style="height: 20px;" value="${sorder.number}" lang="${sorder.number}" title="${sorder.id}">		
+								</div>
+							</td>
+							<td class="align_center vline prcie">${sorder.number*sorder.price}
+							</td>
+							<td class="align_center vline"><a href="sorder_delete.action?id=${sorder.id}" class="remove"></a>
+							</td>
+						</tr>
+					</c:forEach>
 				</table>
 				<!-- 结算 -->
 				<div class="totals">
@@ -161,7 +140,7 @@
 								<td width="60%" colspan="1" class="align_left"><strong>小计</strong>
 								</td>
 								<td class="align_right" style=""><strong><span
-										class="price">￥109.00</span>
+										class="total">￥${total}</span>
 								</strong>
 								</td>
 							</tr>
@@ -171,9 +150,9 @@
 								</td>
 							</tr>
 							<tr>
-								<td width="60%" colspan="1" class="align_left total"><strong>总计</strong>
+								<td width="60%" colspan="1" class="align_left"><strong>总计</strong>
 								</td>
-								<td class="align_right" style=""><span class="total"><strong>￥109.00</strong>
+								<td class="align_right" style=""><span class="total"><strong>￥${total}</strong>
 								</span>
 								</td>
 							</tr>
@@ -182,7 +161,7 @@
 					<div class="action_buttonbar">
 						<button type="button" title="" class="checkout fr"
 							style="background-color: #f38256;">
-							<font><font>结帐</font>
+							<font><a href="${shop}/user/confirm.jsp">结帐</a>
 							</font>
 						</button>
 						<button type="button" title="" class=" fr">

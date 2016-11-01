@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,7 +20,7 @@ public class Product implements java.io.Serializable {
 	private Integer id;
 	private Category category;
 	private String name;
-	private Double price;
+	private double price;
 	private String pic;
 	private String remark;
 	private String xremark;
@@ -31,7 +32,7 @@ public class Product implements java.io.Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Product(Integer id, Category category, String name, Double price,
+	public Product(Integer id, Category category, String name, double price,
 			String pic, String remark, String xremark, Date date,
 			Boolean commend, Boolean open) {
 		super();
@@ -59,7 +60,7 @@ public class Product implements java.io.Serializable {
 		this.id = id;
 	}
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="cid")
 	public final Category getCategory() {
 		return category;
@@ -73,10 +74,10 @@ public class Product implements java.io.Serializable {
 	public final void setName(String name) {
 		this.name = name;
 	}
-	public final Double getPrice() {
+	public final double getPrice() {
 		return price;
 	}
-	public final void setPrice(Double price) {
+	public final void setPrice(double price) {
 		this.price = price;
 	}
 	public final String getPic() {

@@ -7,14 +7,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_account")
-public class Account {
+public class Account implements java.io.Serializable {
+	
+	private static final long serialVersionUID = 8257930349608306278L;
+	
 	private Integer id;
 	private String login;
 	private String name;
 	private String pass;
-	//没有这个业务逻辑
-	//private Set<Category> categorys;
-
+	
 	// Action --> ModelDriven
 	public Account() {
 		// TODO Auto-generated constructor stub

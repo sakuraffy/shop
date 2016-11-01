@@ -16,15 +16,15 @@
                             <!--头部小导航-->
                             <div class="welcom fl">欢迎光临LEISUPET SHOP! </div>
                             <ul class="top_links fr">
-                                <li class="highlight"><a href="#">首页</a></li>
+                                <li class="highlight"><a href="index.jsp">首页</a></li>
                                 <li><a href="#">我的账户</a></li>
-                                <li><a href="#">购物车</a></li>
+                                <li><a href="sorder_queryUnfinish.action">购物车</a></li>
                                 <li><a href="#">注册</a></li>
                                 <li ><a href="login.jsp">登录</a></li>
                             </ul>
                             <!--头部小导航结束-->
                             <!-- logo -->
-                            <h1 class="logo clear fl"> <a href="index.html"><img src="images/logo.png" /></a> </h1>
+                            <h1 class="logo clear fl"> <a href="index.html"><img src="${shop}/images/logo.png" /></a> </h1>
                             <!-- 购物车 -->
                             <div class="minicart">
                                 <a class="minicart_link" href="#">
@@ -141,11 +141,11 @@
             </div>
             <!-- 右侧焦点图区域 -->
             <div id="main_content ">
-                <div > <img src="images/lm_banner_1.jpg" /> </div>
+                <div > <img src="${shop}/images/lm_banner_1.jpg" /> </div>
             </div>
         </div>
 
-        <!-- 产品列表 -->
+       <!-- 产品列表 -->
             <c:forEach items="${applicationScope.bigList}" var="list">
 	            <div class="products_list products_slider clear">
 	            	<!-- 显示类别名称 -->
@@ -158,7 +158,7 @@
 		                            <h3><a href="#">商品名称：${product.name }</a></h3>
 		                            <small>简单描述：${product.remark}</small> </div>
 		                        <div class="price_info"> 
-		                            <a href="${shop}/sorder_addSorder.action?product.id=${product.id}"><button><span class="pr_add">添加购物车</span></button></a>
+		                            <a href="${shop}/sorder_saveToCar.action?product.id=${product.id}"><button><span class="pr_add">添加购物车</span></button></a>
 		                            <button class="price_add" title="" type="button">
 		                            	<span class="pr_price">￥${product.price}</span>
 		                            </button>

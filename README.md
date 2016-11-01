@@ -102,3 +102,11 @@ shop 开发过程
 		12.2修改web.xml
 		12.3添加login.jsp和showCar.jsp
 		12.4添加修改UserAction与UserService
+		
+	13. 完成订单与购物车模块
+		13.1添加Order、Sorder及对应的Action和Service以及Statue
+		13.2订单项入库（判断是否重复）
+		13.3购物车的显示
+		13.4Ajax更新数目及金额
+		13.5订单项与订单级联入库
+		13.6修改struts.xml
