@@ -3,6 +3,8 @@ package cn.sakuraffy.shop.action;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -10,6 +12,8 @@ import cn.sakuraffy.shop.model.Order;
 import cn.sakuraffy.shop.model.Sorder;
 import cn.sakuraffy.shop.model.Status;
 import cn.sakuraffy.shop.model.User;
+import cn.sakuraffy.shop.util.EmailUtil;
+import cn.sakuraffy.shop.util.MessageUtil;
 
 @Controller("orderAction")
 @Scope("prototype")
@@ -17,6 +21,11 @@ import cn.sakuraffy.shop.model.User;
 public class OrderAction extends BaseAction<Order>{
 
 	private static final long serialVersionUID = 2891217168749001987L;
+	
+	@Resource
+	private MessageUtil messageUtil;
+	@Resource
+	private EmailUtil emailUtil;
 	
 	public String save() {
 		List<Sorder> sorders = (List<Sorder>) session.get("sorders");
@@ -30,6 +39,11 @@ public class OrderAction extends BaseAction<Order>{
 			sorder.setOrder(model);
 		}
 		orderService.save(model);
+		
+		// 通过邮件和短信的方式通知
+		emailUtil.sendEmail(model.getUser(), model);
+		messageUtil.sendMessage(model.getUser(), model);
+		
 		return "index";
 	}
 	
