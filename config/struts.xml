@@ -52,6 +52,7 @@
 		
 		<action name="sorder_*" class="sorderAction" method="{1}">
 			<result name="showCar">/showCar.jsp</result>
+			<result name="jsonList" type="json"></result>
 			<result name="stream" type="stream">
 				<param name="inputName">jsonStream</param>
 			</result>

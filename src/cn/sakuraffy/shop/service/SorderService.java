@@ -11,4 +11,5 @@ public interface SorderService extends BaseService<Sorder> {
 	Sorder getById(int id);
 	void updateByNumber(int number, int id);
 	Double culTotal(List<Sorder> sorders);
+	public List<Object> querySale(int number);
 }

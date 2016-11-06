@@ -116,3 +116,9 @@ shop 开发过程
 		14.2加入EmailUtil和MessageUtil及相应实现类
 		14.3去sms申请短信服务
 		14.4去邮箱设置开启服务
+		
+	15. 完成数据统计功能
+		15.1加入相应的js
+		15.2使用jscharts网站在线生成的js
+		15.3SorderAction,SorderService,SorderServiceImpl中添加querySale()
+		15.4添加sale.jsp

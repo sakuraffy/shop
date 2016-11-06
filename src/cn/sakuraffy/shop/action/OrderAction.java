@@ -42,7 +42,7 @@ public class OrderAction extends BaseAction<Order>{
 		
 		// 通过邮件和短信的方式通知
 		emailUtil.sendEmail(model.getUser(), model);
-		messageUtil.sendMessage(model.getUser(), model);
+		//messageUtil.sendMessage(model.getUser(), model);
 		
 		return "index";
 	}

@@ -55,4 +55,14 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder>
 		return total;
 	}
 
+	@Override
+	public List<Object> querySale(int number) {
+		String hql = "select s.name, sum(s.number) from Sorder s "
+				+ "join s.product group by s.product.id";
+		return getSession().createQuery(hql)
+				.setFirstResult(0)
+				.setMaxResults(number)
+				.list();
+	}
+
 }
