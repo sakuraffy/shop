@@ -122,3 +122,13 @@ shop 开发过程
 		15.2使用jscharts网站在线生成的js
 		15.3SorderAction,SorderService,SorderServiceImpl中添加querySale()
 		15.4添加sale.jsp
+
+	16. 完成Dao层的分离
+
+	17. 使用maven搭建项目，并引入SpringMVC
+		17.1 添加SSH项目依赖
+		17.2 添加web.xml中SpringMVC的servlet及mapping
+		17.3 添加spring-mvc.xml中jsp和json解析器
+		17.4 添加jackson相关依赖
+		17.5 修改AccountAction等Action实现前台调转使用struts2，后台跳转使用spring-mvc
+		17.6 修改jsp对应内容
