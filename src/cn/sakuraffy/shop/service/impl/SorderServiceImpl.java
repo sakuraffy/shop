@@ -9,7 +9,6 @@ import cn.sakuraffy.shop.model.Sorder;
 import cn.sakuraffy.shop.service.SorderService;
 
 @Service("soderService")
-@SuppressWarnings("unchecked")
 public class SorderServiceImpl extends BaseServiceImpl<Sorder>
 				implements SorderService {
 
@@ -25,25 +24,17 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder>
 
 	@Override
 	public List<Sorder> queryUnfinish() {
-		String hql = "from Sorder s where s.order.id = null";
-		return getSession().createQuery(hql).list();
+		return sorderDao.queryUnfinish();
 	}
 
 	@Override
 	public Sorder getById(int id) {
-		String hql = "from Sorder s where s.product.id = :id and s.order.id = null";
-		return (Sorder) getSession().createQuery(hql)
-				.setInteger("id", id)
-				.uniqueResult();
+		return sorderDao.getById(id);
 	}
 
 	@Override
 	public void updateByNumber(int number, int id) {
-		String hql = "update Sorder s set s.number = :number where s.id = id";
-		getSession().createQuery(hql)
-				.setInteger("number", number)
-				.setInteger("id", id)
-				.executeUpdate();
+		sorderDao.updateByNumber(number, id);
 	}
 
 	@Override
@@ -57,12 +48,7 @@ public class SorderServiceImpl extends BaseServiceImpl<Sorder>
 
 	@Override
 	public List<Object> querySale(int number) {
-		String hql = "select s.name, sum(s.number) from Sorder s "
-				+ "join s.product group by s.product.id";
-		return getSession().createQuery(hql)
-				.setFirstResult(0)
-				.setMaxResults(number)
-				.list();
+		return sorderDao.querySale(number);
 	}
 
 }

@@ -11,11 +11,7 @@ public class UserServiceImpl extends BaseServiceImpl<User>
 
 	@Override
 	public User login(User user) {
-		String hql = "from User u where u.login = :login and pass = :pass";
-		return (User) getSession().createQuery(hql)
-			.setString("login", user.getLogin())
-			.setString("pass", user.getPass())
-			.uniqueResult();
+		return userDao.login(user);
 	}
 
 }

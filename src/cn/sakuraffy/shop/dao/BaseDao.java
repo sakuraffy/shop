@@ -1,8 +1,8 @@
-package cn.sakuraffy.shop.service;
+package cn.sakuraffy.shop.dao;
 
 import java.util.List;
 
-public interface BaseService<T> {
+public interface BaseDao<T> {
 	public T getById(int id);
 	public void save(T t);
 	public void update(T t);

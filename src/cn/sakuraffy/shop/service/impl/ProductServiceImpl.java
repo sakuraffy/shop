@@ -8,40 +8,27 @@ import cn.sakuraffy.shop.model.Product;
 import cn.sakuraffy.shop.service.ProductService;
 
 @Service("productService")
-@SuppressWarnings("unchecked")
 public class ProductServiceImpl extends BaseServiceImpl<Product>
 				implements ProductService {
 
 	@Override
 	public Long total(String name) {
-		String hql = "select count(*) from Product p where p.name like :name";
-		return (Long) getSession().createQuery(hql)
-				.setString("name", "%" + name + "%")
-				.uniqueResult();			
+		return productDao.total(name);		
 	}
 
 	@Override
 	public List<Product> queryJoinCategory(String name, int page, int rows) {
-		String hql = "from Product p left join fetch p.category where p.name like :name";
-		return getSession().createQuery(hql)
-				.setString("name", "%" + name + "%")
-				.setFirstResult((page-1) * rows)
-				.setMaxResults(rows)
-				.list();
+		return productDao.queryJoinCategory(name, page, rows);
 	}
 
 	@Override
 	public void deleteByIds(String ids) {
-		String hql = "delete from Product p where p.id in (" + ids + ")";
-		getSession().createQuery(hql).executeUpdate();
+		productDao.deleteByIds(ids);
 	}
 
 	@Override
 	public List<Product> queryByCategoryId(int id) {
-		String hql = "from Product p where p.category.id = :id";
-		return getSession().createQuery(hql)
-				.setInteger("id", id)
-				.list();
+		return productDao.queryByCategoryId(id);
 	}
 
 }

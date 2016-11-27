@@ -1,63 +1,79 @@
 package cn.sakuraffy.shop.service.impl;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Service;
-
+import cn.sakuraffy.shop.dao.AccountDao;
+import cn.sakuraffy.shop.dao.BaseDao;
+import cn.sakuraffy.shop.dao.CategoryDao;
+import cn.sakuraffy.shop.dao.OrderDao;
+import cn.sakuraffy.shop.dao.ProductDao;
+import cn.sakuraffy.shop.dao.SorderDao;
+import cn.sakuraffy.shop.dao.UserDao;
 import cn.sakuraffy.shop.service.BaseService;
 
-@Transactional
 @SuppressWarnings("unchecked")
-@Service(value="baseService")
-@Lazy(value=true)
 public class BaseServiceImpl<T> implements BaseService<T> {
-	@Resource
-	private SessionFactory sessionFactory;
-	private Class<T> clazz;
+
+	private BaseDao<T> baseDao;
+	protected Class<T> clazz;
 	
-	protected Session getSession() {
-		return sessionFactory.getCurrentSession();
+	@Resource
+	protected AccountDao accountDao;
+	@Resource
+	protected CategoryDao categoryDao;
+	@Resource
+	protected OrderDao orderDao;
+	@Resource
+	protected ProductDao productDao;
+	@Resource
+	protected SorderDao sorderDao;
+	@Resource
+	protected UserDao userDao;
+	
+	public BaseServiceImpl() {
+		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+		clazz = (Class<T>) type.getActualTypeArguments()[0];
 	}
 	
-	@SuppressWarnings("rawtypes")
-	public BaseServiceImpl() {
-		// 获取泛型参数类型
-		ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
-		clazz = (Class) type.getActualTypeArguments()[0];
+	@PostConstruct
+	public void init() throws Exception {
+		String className = clazz.getSimpleName();
+		String classDaoName = className.substring(0,1).toLowerCase()
+				+ className.substring(1) + "Dao";
+		
+		Field baseField = this.getClass().getSuperclass().getDeclaredField("baseDao");
+		Field classField = this.getClass().getSuperclass().getDeclaredField(classDaoName);
+		baseField.set(this, classField.get(this));
+	}
+	
+	@Override
+	public T getById(int id) {
+		return (T) baseDao.getById(id);
 	}
 
 	@Override
 	public void save(T t) {
-		getSession().save(t);
+		baseDao.save(t);
 	}
 
 	@Override
 	public void update(T t) {
-		getSession().update(t);
-	}
-	
-	@Override
-	public void delete(int id) {
-		String hql = "delete " + clazz.getSimpleName() + " c where c.id = :id";
-		getSession().createQuery(hql).setInteger("id", id).executeUpdate();
+		baseDao.update(t);
 	}
 
 	@Override
-	public T get(int id) {
-		return (T) getSession().get(clazz, id);
+	public void delete(int id) {
+		baseDao.delete(id);
 	}
 
 	@Override
 	public List<T> query() {
-		String hql = "from " + clazz.getSimpleName();
-		return getSession().createQuery(hql).list();
+		return baseDao.query();
 	}
 
 }

@@ -31,7 +31,7 @@ public class SorderAction extends BaseAction<Sorder>{
 		Sorder sorder = sorderService.getById(model.getProduct().getId());
 		// 判断是否有同Id的订单项
 		if (sorder == null) {
-			Product product = productService.get(model.getProduct().getId());
+			Product product = productService.getById(model.getProduct().getId());
 			model = sorderService.productToSorder(product, 1);
 			// 保存订单项
 			sorderService.save(model);
@@ -46,7 +46,7 @@ public class SorderAction extends BaseAction<Sorder>{
 	// 使用Ajax调用
 	public String updateByNumber() {
 		// 修改指定订单项的件数
-		Sorder sorder = sorderService.get(model.getId());
+		Sorder sorder = sorderService.getById(model.getId());
 		sorder.setNumber(model.getNumber());
 		sorderService.update(sorder);
 		

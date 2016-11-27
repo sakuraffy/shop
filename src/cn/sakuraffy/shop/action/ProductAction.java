@@ -69,7 +69,7 @@ public class ProductAction extends BaseAction<Product>{
 	}
 	
 	public String get() {
-		request.put("product", productService.get(model.getId()));
+		request.put("product", productService.getById(model.getId()));
 		return "detail";
 	}
 }
