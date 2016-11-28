@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
         http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd" >
         
         <context:component-scan base-package="cn.sakuraffy.shop.."/> 
         
@@ -51,9 +51,22 @@
 			 <property name="packagesToScan" value="cn.sakuraffy.shop.model" />  
 		</bean> 
 		
-		<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-			<property name="sessionFactory" ref="sessionFactory" />
-		</bean>
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+	        <property name="dataSource" ref="dataSource" />
+	        <property name="typeAliasesPackage" value="cn.sakuraffy.shop.model" />  
+	        <!-- 自动扫描mapping.xml文件 -->  
+	        <property name="mapperLocations" value="classpath:cn/sakuraffy/shop/mapper/*.xml" />  
+	    </bean>  
+	
+	    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
+	    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+	        <property name="basePackage" value="cn.sakuraffy.shop.mapper" />  
+	        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />  
+	    </bean>  
+		
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+	        <property name="dataSource" ref="dataSource" />  
+	    </bean>
 		
 		<tx:advice id="advice" transaction-manager="transactionManager">  
 		    <tx:attributes>  
@@ -69,6 +82,6 @@
 		    <aop:pointcut id="pointcut" expression="execution(* cn.sakuraffy.shop.service.impl.*.*(..))" />  
 		    <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/><!-- 连接了<span style="font-family:Microsoft YaHei;">上</span>面的advice和上面的pointcut -->  
 		    <!-- aop:pointcut要写在aop:advisor上面，否则会报错 -->  
-		 </aop:config> 
+		</aop:config> 
 			
 </beans>

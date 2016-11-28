@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.sakuraffy.shop.mapper.AccountMapper">
+	<sql id="column_list">
+		a.id as account_id,
+		a.login as account_login,
+		a.name as account_name,
+		a.pass as account_pass
+	</sql>
+	<resultMap type="Account" id="baseMap">
+		<id column="account_id" property="id"/>
+		<result column="account_login" property="login"/>
+		<result column="account_name" property="name"/>
+		<result column="account_pass" property="pass"/>
+	</resultMap>
+</mapper>

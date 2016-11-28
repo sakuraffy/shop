@@ -15,7 +15,7 @@
 		$(function(){
 			$('#dg').datagrid({   
 				//url地址改为请求categoryAction
-			    url:'product_queryJoinCategory.action',
+			    url:'product/queryJoinCategory.do',
 			    loadMsg:'Loading......',
 			    queryParams:{name:''},//这里不需要传具体的name，因为我们要显示所有的
 			    //width:300,
@@ -104,7 +104,7 @@
 								    }
 								    ids = ids.substr(0, ids.lastIndexOf(","));
 								    //2. 发送ajax请求
-								    $.post("product_deleteByIds.action",{ids:ids},function(result){
+								    $.post("product/deleteByIds.do",{ids:ids},function(result){
 								    	if(result == "true") {
 								    		//将刚刚选中的记录删除，要不然会影响后面更新的操作
 								    		$("#dg").datagrid("uncheckAll");

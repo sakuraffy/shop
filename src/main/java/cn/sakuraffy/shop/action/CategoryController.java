@@ -30,8 +30,8 @@ public class CategoryController {
 		categoryService.update(category);
 	}
 	
-	@RequestMapping("/queryJoinAccount")
 	@ResponseBody
+	@RequestMapping("/queryJoinAccount")
 	public Map<String,Object> queryJoinAccount(String type, int page, int rows) {
 		Long total = categoryService.total(type);
 		System.out.println(total);
@@ -43,9 +43,9 @@ public class CategoryController {
 		return map;
 	}
 	
+	@ResponseBody
 	@SuppressWarnings("finally")
 	@RequestMapping("/deleteByIds")
-	@ResponseBody
 	public Boolean deleteByIds(String ids) {
 		boolean flag = false;
 		try {	
@@ -58,8 +58,8 @@ public class CategoryController {
 		}
 	}
 	
-	@RequestMapping("/query")
 	@ResponseBody
+	@RequestMapping("/query")
 	public List<Category> query() {
 		List<Category> list = categoryService.query();
 		return list;

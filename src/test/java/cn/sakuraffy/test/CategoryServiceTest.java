@@ -24,4 +24,24 @@ public class CategoryServiceTest {
 			System.out.println(c.getAccount());
 		}
 	}
+	
+	@Test
+	public void testTotal() {
+		System.out.println(categoryService.total(""));
+	}
+	
+	@Test
+	public void testQueryJoinAccountAll() {
+		for(Category c : categoryService.queryJoinAccount()) {
+			System.out.println(c);
+			System.out.println(c.getAccount());
+		}
+	}
+	
+	@Test
+	public void testQueryByHot() {
+		for(Category c : categoryService.queryByHot(true)) {
+			System.out.println(c);
+		}
+	}
 }

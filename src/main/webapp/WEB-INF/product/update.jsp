@@ -12,11 +12,10 @@
 		$(function(){
 			//iframe中的datagrid对象
 			var dg = parent.$("iframe[title='商品管理']").get(0).contentWindow.$("#dg");
-			
 			//对商品类的下拉列表框进行远程加载
 			$("#cc").combobox({   
 				//将请求发送给categoryAction中的query方法处理，这里需要将处理好的数据返回到这边来显示了 ，所以后台需要将数据打包成json格式发过来
-			    url:'category_query.action',  
+			    url:'category/query.do',  
 			    valueField:'id',    
 			    textField:'type', //我们下拉列表中显示的是商品的类别名
 			    panelHeight:'auto', //自适应高度
@@ -80,7 +79,7 @@
 				if($("#ff").form("validate")) {
 					//调用submit方法提交数据
 					$("#ff").form('submit', {
-						url: 'product_update.action', //提交时将请求传给productAction的update方法执行
+						url: 'product/update.do', //提交时将请求传给productAction的update方法执行
 						success: function(){
 							//如果成功了，关闭当前窗口，并刷新页面
 							parent.$("#win").window("close");
@@ -102,7 +101,7 @@
 			<label for="price">商品价格:</label> <input type="text" name="price" />
 		</div>
 		<div>
-			<label>更新图片:</label> <input type="file" name="fileImage.upload" />
+			<label>更新图片:</label> <input type="file" name="file" />
 		</div>
 		<div>   
 	        <label for="account">所属商品类:</label>

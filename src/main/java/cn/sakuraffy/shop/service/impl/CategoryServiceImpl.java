@@ -1,9 +1,14 @@
 package cn.sakuraffy.shop.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import cn.sakuraffy.shop.mapper.CategoryMapper;
 import cn.sakuraffy.shop.model.Category;
 import cn.sakuraffy.shop.service.CategoryService;
 
@@ -11,9 +16,12 @@ import cn.sakuraffy.shop.service.CategoryService;
 public class CategoryServiceImpl extends BaseServiceImpl<Category> 
 					implements CategoryService {
 	
+	@Resource
+	private CategoryMapper categoryMapper;
+	
 	@Override
 	public List<Category> queryJoinAccount() {
-		return categoryDao.queryJoinAccount();
+		return categoryMapper.queryJoinAccountAll();
 	}
 
 	@Override
@@ -23,7 +31,11 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category>
 	
 	@Override
 	public List<Category> queryJoinAccount(String type,int page, int rows) {
-		return categoryDao.queryJoinAccount(type, page, rows);
+		Map<String,Object> map = new HashMap<>();
+		map.put("type", "%" + type + "%");
+		map.put("startNum", (page-1)*rows);
+		map.put("rows", rows);
+		return categoryMapper.queryJoinAccount(map);
 	}
 
 	@Override
@@ -33,7 +45,7 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category>
 
 	@Override
 	public Long total(String type) {
-		return categoryDao.total(type);
+		return categoryMapper.total("%" + type + "%");
 	}
 
 	@Override
@@ -43,7 +55,11 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category>
 
 	@Override
 	public List<Category> queryByHot(boolean hot) {
-		return categoryDao.queryByHot(hot);
+		return categoryMapper.queryByHot(hot);
 	}
 
+	@Override
+	public List<Category> query() {
+		return categoryMapper.query();
+	}
 }

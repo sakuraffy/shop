@@ -30,7 +30,7 @@
 			//对商品类别的下拉列表框进行远程加载
 			$("#cc").combobox({   
 				//将请求发送给categoryAction中的query方法处理，这里需要将处理好的数据返回到这边来显示了 ，所以后台需要将数据打包成json格式发过来
-			    url:'category_query.action',  
+			    url:'category/query.do',  
 			    valueField:'id',    
 			    textField:'type', //我们下拉列表中显示的是所有的商品类别
 			    panelHeight:'auto', //自适应高度
@@ -46,7 +46,6 @@
 				required:true,
 				missingMessage:'请输入商品名称'
 			});
-
 			$("input[name=price]").numberbox({
 				required:true,
 				missingMessage:'请输入商品价格',
@@ -82,7 +81,7 @@
 				if($("#ff").form("validate")) {
 					//调用submit方法提交数据
 					$("#ff").form('submit', {
-						url: 'product_save.action',
+						url: 'product/save.do',
 						success: function(){
 							//如果成功了，关闭当前窗口
 							parent.$("#win").window("close");
@@ -112,7 +111,7 @@
 			<label>商品价格:</label> <input type="text" name="price" />
 		</div>
 		<div>
-			<label>图片上传:</label> <input type="file" name="fileImage.upload" />
+			<label>图片上传:</label> <input type="file" name="file" />
 		</div>
 
 		<div>

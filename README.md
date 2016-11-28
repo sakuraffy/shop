@@ -132,3 +132,8 @@ shop 开发过程
 		17.4 添加jackson相关依赖
 		17.5 修改AccountAction等Action实现前台调转使用struts2，后台跳转使用spring-mvc
 		17.6 修改jsp对应内容
+
+	18. 加入Mybatis处理查询操作
+		18.1 加入Mybatis相关依赖
+		18.2 修改spring-core.xml配置sqlSessionFactory
+		18.3 添加相应Mapper.java和Mapper.xml

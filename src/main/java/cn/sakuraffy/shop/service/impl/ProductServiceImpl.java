@@ -1,9 +1,14 @@
 package cn.sakuraffy.shop.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import cn.sakuraffy.shop.mapper.ProductMapper;
 import cn.sakuraffy.shop.model.Product;
 import cn.sakuraffy.shop.service.ProductService;
 
@@ -11,14 +16,21 @@ import cn.sakuraffy.shop.service.ProductService;
 public class ProductServiceImpl extends BaseServiceImpl<Product>
 				implements ProductService {
 
+	@Resource
+	private ProductMapper ProductMapper;
+	
 	@Override
 	public Long total(String name) {
-		return productDao.total(name);		
+		return ProductMapper.total("%" + name + "%");		
 	}
 
 	@Override
 	public List<Product> queryJoinCategory(String name, int page, int rows) {
-		return productDao.queryJoinCategory(name, page, rows);
+		Map<String,Object> map = new HashMap<>();
+		map.put("name", "%"+ name +"%");
+		map.put("startNum", (page-1)*rows);
+		map.put("rows", rows);
+		return ProductMapper.queryJoinCategory(map);
 	}
 
 	@Override
@@ -28,7 +40,7 @@ public class ProductServiceImpl extends BaseServiceImpl<Product>
 
 	@Override
 	public List<Product> queryByCategoryId(int id) {
-		return productDao.queryByCategoryId(id);
+		return ProductMapper.queryByCategoryId(id);
 	}
 
 }

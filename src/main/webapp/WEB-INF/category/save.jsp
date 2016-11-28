@@ -18,8 +18,8 @@
 			//对管理员的下拉列表框进行远程加载
 			$("#cc").combobox({   
 				//将请求发送给accountAction中的query方法处理，这里需要将处理好的数据返回到这边来显示了 ，所以后台需要将数据打包成json格式发过来
-			    url:'account/query.do',  
-			    valueField:'id',    
+			    url:'account/query.do', 
+			    valueField:'id',
 			    textField:'login', //我们下拉列表中显示的是管理员的登录名
 			    panelHeight:'auto', //自适应高度
 			    panelWidth:120,//下拉列表是两个组件组成的

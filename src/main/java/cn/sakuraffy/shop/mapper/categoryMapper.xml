@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.sakuraffy.shop.mapper.CategoryMapper">
+	<sql id="column_list">
+		c.id as category_id,
+		c.hot as category_hot,
+		c.type as category_type
+	</sql>
+	<resultMap id="baseMap" type="Category">
+		<id column="category_id" property="id"/>
+		<result column="category_hot" property="hot"/>
+		<result column="category_type" property="type"/>
+	</resultMap>
+	
+	<select id="query" resultMap="baseMap">
+		SELECT <include refid="column_list"/>
+		FROM t_category c
+	</select>
+	
+	<select id="total" parameterType="java.lang.String" resultType="java.lang.Long">
+		SELECT COUNT(*) FROM t_category WHERE type LIKE #{type} 
+	</select>
+	
+	<resultMap type="Category" id="categoryAccountMap" extends="baseMap">
+		<association property="account" 
+			resultMap="cn.sakuraffy.shop.mapper.AccountMapper.baseMap" />
+	</resultMap>
+	
+	<parameterMap id="queryJoinAccountParameter" type="java.util.Map">
+		<parameter property="type" javaType="java.lang.String"/>
+		<parameter property="startNum" javaType="int"/>
+		<parameter property="rows" javaType="int"/>
+	</parameterMap>
+	
+	<select id="queryJoinAccount" parameterMap="queryJoinAccountParameter" 
+		resultMap="categoryAccountMap">
+		SELECT <include refid="column_list"/> ,
+			<include refid="cn.sakuraffy.shop.mapper.AccountMapper.column_list" />
+		FROM t_category c,t_account a
+		WHERE c.aid = a.id
+			AND c.type LIKE #{type}
+		LIMIT  #{startNum},#{rows}
+	</select>
+	
+	<select id="queryJoinAccountAll" resultMap="categoryAccountMap">
+		SELECT <include refid="column_list"/> ,
+			<include refid="cn.sakuraffy.shop.mapper.AccountMapper.column_list" />
+		FROM t_category c,t_account a
+		WHERE c.aid = a.id
+	</select>
+	
+	<select id="queryByHot" parameterType="boolean" resultMap="baseMap">
+		SELECT <include refid="column_list"/>
+		FROM t_category c
+		WHERE  c.hot = #{hot}
+	</select>
+</mapper>
