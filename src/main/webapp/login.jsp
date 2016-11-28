@@ -28,7 +28,7 @@
 					<!--头部小导航结束-->
 					<!-- logo -->
 					<h1 class="logo clear fl">
-						<a href="index.html"> <img src="images/logo.png" /> </a>
+						<a href="index.html"> <img src="${shop}/images/logo.png" /> </a>
 					</h1>
 					<!-- 小购物车 -->
 					<div class="minicart">

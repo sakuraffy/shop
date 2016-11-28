@@ -25,6 +25,11 @@ public class ProductServiceImpl extends BaseServiceImpl<Product>
 	}
 
 	@Override
+	public Product getById(int id) {
+		return ProductMapper.getById(id);
+	}
+	
+	@Override
 	public List<Product> queryJoinCategory(String name, int page, int rows) {
 		Map<String,Object> map = new HashMap<>();
 		map.put("name", "%"+ name +"%");

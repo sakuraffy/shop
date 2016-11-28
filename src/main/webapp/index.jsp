@@ -153,9 +153,9 @@
 	                <ul id="first-carousel" class="first-and-second-carousel jcarousel-skin-tango">
 	                    <c:forEach items="${list }" var="product">
 		                    <li> 
-		                    	<a href="${shop}/product_get.action?id=${product.id}" class="product_image"><img src="${shop}/upload/${product.pic}" /></a>
+		                    	<a href="${shop}/product/getById.do?id=${product.id}" class="product_image"><img src="${shop}/upload/${product.pic}" /></a>
 		                        <div class="product_info">
-		                            <h3><a href="#">商品名称：${product.name }</a></h3>
+		                            <h3><a href="${shop}/product/getById.do?id=${product.id}">商品名称：${product.name }</a></h3>
 		                            <small>简单描述：${product.remark}</small> </div>
 		                        <div class="price_info"> 
 		                            <a href="${shop}/sorder_saveToCar.action?product.id=${product.id}"><button><span class="pr_add">添加购物车</span></button></a>
@@ -174,7 +174,7 @@
             <div class="products_list products_slider clear">
                 <h2 class="sub_title">新品发售</h2>
                 <ul id="first-carousel" class="first-and-second-carousel jcarousel-skin-tango">
-                    <li> <a  href="#" class="product_image"><img src="images/pr_l_1.jpg" /></a>
+                    <li> <a  href="#" class="product_image"><img src="${shop}/images/pr_l_1.jpg" /></a>
                         <div class="product_info">
                             <h3><a href="#">夏季新品长裙</a></h3>
                             <small>印花 纯棉</small> </div>
@@ -182,7 +182,7 @@
                             </button><button><span class="pr_add">添加购物车</span></button><button class="price_add" title="" type="button"><span class="pr_price">￥76.00</span>
                         </div>
                     </li>
-                    <li> <a  href="#" class="product_image"><img src="images/pr_l_2.jpg" /></a>
+                    <li> <a  href="#" class="product_image"><img src="${shop}/images/pr_l_2.jpg" /></a>
                         <div class="product_info">
                             <h3><a href="#">夏季新品长裙</a></h3>
                             <small>印花 纯棉</small> </div>
@@ -191,7 +191,7 @@
                         
                         </div>
                     </li>
-                    <li> <a  href="#" class="product_image"><img src="images/pr_l_3.jpg" /></a>
+                    <li> <a  href="#" class="product_image"><img src="${shop}/images/pr_l_3.jpg" /></a>
                         <div class="product_info">
                             <h3><a href="#">夏季新品长裙</a></h3>
                             <small>印花 纯棉</small> </div>
@@ -199,7 +199,7 @@
                             <button><span class="pr_add">添加购物车</span></button><button class="price_add" title="" type="button"><span class="pr_price">￥76.00</span></button>
                         </div>
                     </li>
-                    <li> <a  href="#" class="product_image"><img src="images/pr_l_5.jpg" /></a>
+                    <li> <a  href="#" class="product_image"><img src="${shop}/images/pr_l_5.jpg" /></a>
                         <div class="product_info">
                             <h3><a href="#">夏季新品长裙</a></h3>
                             <small>印花 纯棉</small> </div>
@@ -207,7 +207,7 @@
                             <button><span class="pr_add">添加购物车</span></button><button class="price_add" title="" type="button"><span class="pr_price">￥76.00</span></button>
                         </div>
                     </li>
-                    <li> <a  href="#" class="product_image"><img src="images/pr_l_1.jpg" /></a>
+                    <li> <a  href="#" class="product_image"><img src="${shop}/images/pr_l_1.jpg" /></a>
                         <div class="product_info">
                             <h3><a href="#">夏季新品长裙</a></h3>
                             <small>印花 纯棉</small> </div>
@@ -215,7 +215,7 @@
                             <button><span class="pr_add">添加购物车</span></button><button class="price_add" title="" type="button"><span class="pr_price">￥76.00</span></button>
                         </div>
                     </li>
-                    <li> <a  href="#" class="product_image"><img src="images/pr_l_2.jpg" /></a>
+                    <li> <a  href="#" class="product_image"><img src="${shop}/images/pr_l_2.jpg" /></a>
                         <div class="product_info">
                             <h3><a href="#">夏季新品长裙</a></h3>
                             <small>印花 纯棉</small> </div>

@@ -36,7 +36,7 @@
                     <!-- logo -->
                     <h1 class="logo clear fl">
                         <a href="index.html">
-                            <img src="images/logo.png" />
+                            <img src="${shop}/images/logo.png" />
                         </a>
                     </h1>
                     <!-- 购物车 -->
@@ -217,31 +217,31 @@
                             <div class="tu">
                                 <ul>
                                     <li>
-                                        <img src="images/0.png" />
+                                        <img src="${shop}/images/0.png" />
                                     </li>
                                     <li>
-                                        <img src="images/1.png" />
+                                        <img src="${shop}/images/1.png" />
                                     </li>
                                     <li>
-                                        <img src="images/2.png" />
+                                        <img src="${shop}/images/2.png" />
                                     </li>
                                     <li>
-                                        <img src="images/3.png" />
+                                        <img src="${shop}/images/3.png" />
                                     </li>
                                     <li>
-                                        <img src="images/4.png" />
+                                        <img src="${shop}/images/4.png" />
                                     </li>
                                     <li>
-                                        <img src="images/5.png" />
+                                        <img src="${shop}/images/5.png" />
                                     </li>
                                     <li>
-                                        <img src="images/6.png" />
+                                        <img src="${shop}/images/6.png" />
                                     </li>
                                     <li>
-                                        <img src="images/7.png" />
+                                        <img src="${shop}/images/7.png" />
                                     </li>
                                     <li>
-                                        <img src="images/8.png" />
+                                        <img src="${shop}/images/8.png" />
                                     </li>
                                 </ul>
                             </div>
@@ -274,13 +274,13 @@
                                 <div class="item">
                                     <b></b>
                                     <a href="#none" title="白色">
-                                        <img data-img="1" src="images/11.jpg" width="25" height="25" alt="白色 "> <i>白色</i>
+                                        <img data-img="1" src="${shop}/images/11.jpg" width="25" height="25" alt="白色 "> <i>白色</i>
                                     </a>
                                 </div>
                                 <div class="item  selected">
                                     <b></b>
                                     <a href="#none" title="黑色">
-                                        <img data-img="1" src="images/22.jpg" width="25" height="25" alt="黑色 "> <i>黑色</i>
+                                        <img data-img="1" src="${shop}/images/22.jpg" width="25" height="25" alt="黑色 "> <i>黑色</i>
                                     </a>
                                 </div>
                             </div>
@@ -329,7 +329,7 @@
                 <ul id="first-carousel" class="first-and-second-carousel jcarousel-skin-tango">
                     <li>
                         <a  href="#"class="product_image">
-                            <img src="images/pr_l_1.jpg" />
+                            <img src="${shop}/images/pr_l_1.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -347,7 +347,7 @@
                     </li>
                     <li>
                         <a   href="#" class="product_image">
-                            <img src="images/pr_l_2.jpg" />
+                            <img src="${shop}/images/pr_l_2.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -366,7 +366,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_3.jpg" />
+                            <img src="${shop}/images/pr_l_3.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -385,7 +385,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_5.jpg" />
+                            <img src="${shop}/images/pr_l_5.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -404,7 +404,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_1.jpg" />
+                            <img src="${shop}/images/pr_l_1.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -423,7 +423,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_2.jpg" />
+                            <img src="${shop}/images/pr_l_2.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -449,7 +449,7 @@
                 <ul id="first-carousel" class="first-and-second-carousel jcarousel-skin-tango">
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_1.jpg" />
+                            <img src="${shop}/images/pr_l_1.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -467,7 +467,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_2.jpg" />
+                            <img src="${shop}/images/pr_l_2.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -486,7 +486,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_3.jpg" />
+                            <img src="${shop}/images/pr_l_3.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -505,7 +505,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_5.jpg" />
+                            <img src="${shop}/images/pr_l_5.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -524,7 +524,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_1.jpg" />
+                            <img src="${shop}/images/pr_l_1.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>
@@ -543,7 +543,7 @@
                     </li>
                     <li>
                         <a  href="#" class="product_image">
-                            <img src="images/pr_l_2.jpg" />
+                            <img src="${shop}/images/pr_l_2.jpg" />
                         </a>
                         <div class="product_info">
                             <h3>

@@ -42,6 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM t_product WHERE name LIKE #{name} 
 	</select>
 	
+	<select id="getById" parameterType="int" resultMap="baseMap">
+		SELECT <include refid="column_list"/>
+		FROM t_product p
+		WHERE  p.id = #{id}
+	</select>
+	
 	<select id="queryByCategoryId" parameterType="int" resultMap="baseMap">
 		SELECT <include refid="column_list"/>
 		FROM t_product p

@@ -20,28 +20,6 @@
             	<param name="root">jsonList</param>
             </result>
         </action>  
-        
-        <action name="category_*" class="categoryAction" method="{1}">  
-            <result name="jsonMap" type="json">
-            	<param name="root">jsonMap</param>
-            </result>  
-            <result name="jsonStream" type="stream">
-            	<param name="inputName">jsonStream</param>
-            </result> 
-            <result name="jsonList" type="json">
-            	<param name="root">jsonList</param>
-            </result>
-        </action>
-        
-        <action name="product_*" class="productAction" method="{1}">  
-            <result name="jsonMap" type="json">
-            	<param name="root">jsonMap</param>
-            </result>  
-            <result name="jsonStream" type="stream">
-            	<param name="inputName">jsonStream</param>
-            </result> 
-            <result name="detail">/detail.jsp</result>
-        </action>
        
        <action name="user_*" class="userAction" method="{1}">
 			<result name="login" type="redirect">/login.jsp</result>

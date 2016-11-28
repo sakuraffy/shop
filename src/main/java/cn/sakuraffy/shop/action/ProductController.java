@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -71,6 +72,13 @@ public class ProductController {
 		}finally {
 			return flag;
 		}
+	}
+	
+	@RequestMapping("/getById")
+	public String getById(int id, ModelMap model) {
+		Product product = productService.getById(id);
+		model.addAttribute("product", product);
+		return "detail";
 	}
 	
 	private String upload(CommonsMultipartFile file , String path) {

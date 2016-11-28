@@ -41,7 +41,7 @@
 
     请选择报表类型：
     <select id="sale">
-        <option value="sorder_querySale.action">年度销售报表</option>
+        <option value="sorder/querySale.do">年度销售报表</option>
     </select>
     查询数量：
     <select id="number">
