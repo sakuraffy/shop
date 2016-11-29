@@ -6,25 +6,7 @@
 <hibernate-configuration>
 
 <session-factory>
-	<!-- <property name="dialect">
-		org.hibernate.dialect.MySQLDialect
-		</property>
-		<property name="connection.url">
-		jdbc:mysql://localhost:3306/test
-		</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">root</property>
-		<property name="connection.driver_class">
-		com.mysql.jdbc.Driver
-		</property> -->
 
-	<!-- 在sessionFactory中添加packagesToScan -->
-	<!-- <mapping resource="cn/sakuraffy/shop/model/Account.hbm.xml" /> -->
-	<!-- <mapping class="cn.sakuraffy.shop.model.Account" /> -->
-
-	<property name="dialect">
-		org.hibernate.dialect.MySQLDialect
-	</property>
 	<property name="show_sql">true</property>
 	<property name="format_sql">true</property>
 	

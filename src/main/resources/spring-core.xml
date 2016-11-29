@@ -5,11 +5,11 @@
 	   xmlns:aop="http://www.springframework.org/schema/aop" 
 	   xmlns:tx="http://www.springframework.org/schema/tx"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+        http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd" >
         
@@ -24,32 +24,52 @@
 		 <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		 	<property name="locations">
 		 		<array>
-		 			<value>classpath:conn.properties</value>
-		 		</array>
-		 	</property>
-		 </bean>
-		 
-		 <!-- 第二种方式是使用注解的方式注入，主要用在java代码中使用注解注入properties文件中相应的value值 -->
-		 <bean id="public" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		 	<property name="locations">
-		 		<array>
-		 			<value>classpath:public.properties</value>
+		 			<value>classpath:jdbc.properties</value>
 		 		</array>
 		 	</property>
 		 </bean>
 	        
-        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">  
-		    <property name="driverClassName" value="${driverClassName}" />  
-		    <property name="url" value="${url}" />  
-		    <property name="username" value="${username}" />  
-		    <property name="password" value="${password}" />
-		</bean>
+       	<bean id="dataSourceMysql" class="org.apache.commons.dbcp.BasicDataSource"  
+	        destroy-method="close">  
+	        <property name="driverClassName" value="${jdbc.mysql.driver}" />  
+	        <property name="url" value="${jdbc.mysql.url}" />  
+	        <property name="username" value="${jdbc.mysql.username}" />  
+	        <property name="password" value="${jdbc.mysql.password}" />    
+	    </bean>
+	    
+	    <bean id="dataSourceOracle" class="org.apache.commons.dbcp.BasicDataSource"  
+	        destroy-method="close">  
+	        <property name="driverClassName" value="${jdbc.oracle.driver}" />  
+	        <property name="url" value="${jdbc.oracle.url}" />  
+	        <property name="username" value="${jdbc.oracle.username}" />  
+	        <property name="password" value="${jdbc.oracle.password}" />    
+	    </bean>    
+	    
+	    <bean id="dataSource" class="cn.sakuraffy.shop.util.datasource.DynamicDataSource">
+	    	<property name="targetDataSources">
+	    		<map key-type="cn.sakuraffy.shop.util.datasource.DataSourceType">
+	    			<entry key="MYSQL" value-ref="dataSourceMysql" />
+	    			<entry key="ORACLE" value-ref="dataSourceOracle" />
+	    		</map>
+	    	</property>
+	    	<property name="defaultTargetDataSource" ref="dataSourceOracle"/>
+	    </bean>
 		
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">  
-		     <property name="dataSource" ref="dataSource" />  
-		     <property name="configLocation" value="classpath:hibernate.cfg.xml" /> <!-- 加载hibernate配置文件 -->  
-			 <property name="packagesToScan" value="cn.sakuraffy.shop.model" />  
-		</bean> 
+	        <property name="dataSource" ref="dataSource"/> 
+	        <property name="configLocation" value="classpath:hibernate.cfg.xml" /> <!-- 加载hibernate配置文件 -->  
+	        <property name="packagesToScan">
+	        	<list>
+	        		<value>cn.sakuraffy.shop.model</value>
+	        	</list>
+	        </property>
+	        <property name="hibernateProperties">  
+	            <props>
+	            	<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop> 
+	                <prop key="show_sql">true</prop>  
+	            </props>  
+	        </property>  
+	    </bean>  
 		
 		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
 	        <property name="dataSource" ref="dataSource" />
@@ -80,8 +100,15 @@
 		<aop:config>  
 		    <!-- 配置哪些包的类要切入事务 -->  
 		    <aop:pointcut id="pointcut" expression="execution(* cn.sakuraffy.shop.service.impl.*.*(..))" />  
-		    <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/><!-- 连接了<span style="font-family:Microsoft YaHei;">上</span>面的advice和上面的pointcut -->  
+		    <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
 		    <!-- aop:pointcut要写在aop:advisor上面，否则会报错 -->  
 		</aop:config> 
+		
+		<bean id="dsAdvice" class="cn.sakuraffy.shop.util.datasource.DataSourceAdvice" />
+		
+		<aop:config>
+			<aop:pointcut id="dsPointcut" expression="execution(* cn.sakuraffy.shop.service.impl.*.*(..))" />
+			<aop:advisor advice-ref="dsAdvice" pointcut-ref="dsPointcut"/>
+		</aop:config>
 			
 </beans>

@@ -1,5 +1,7 @@
 package cn.sakuraffy.test;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -17,7 +19,16 @@ public class AccountTest {
 	private AccountService accountService;
 	
 	@Test
-	public void testSave() {
-		accountService.save(new Account("admin", "管理员", "admin"));
+	public void testGetById() {
+		System.out.println(accountService.getById(1));
+	}
+	
+	@Test
+	public void testQuery() {
+		List<Account> list = accountService.query();
+		System.out.println(list.size());
+		for(Account account : list) {
+			System.out.println(account);
+		}
 	}
 }

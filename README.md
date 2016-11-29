@@ -137,3 +137,12 @@ shop 开发过程
 		18.1 加入Mybatis相关依赖
 		18.2 修改spring-core.xml配置sqlSessionFactory
 		18.3 添加相应Mapper.java和Mapper.xml
+
+	19. 加入Oracle数据库
+		19.1 添加oracle相关依赖
+		19.2 在spring-mvc.xml中加入dataSource，dataSourceMysql，dataSourceOracle
+		19.3 加入DataSource、DataSourceType、DynamicDataSource、DataSourceContextHolder、DataSourceAdvice
+		19.4 在spring-mvc中加入datasource相关aop
+		19.5 修改AccountService加入注解
+		19.6 添加Oracle数据
+		19.7 修改测试类TestAccountService
